@@ -1,0 +1,201 @@
+<svg width="680" height="560" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#0A1628"/>
+    <stop offset="50%" style="stop-color:#0D1F3C"/>
+    <stop offset="100%" style="stop-color:#1A0A08"/>
+  </linearGradient>
+  <linearGradient id="goldH" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#8B6000"/>
+    <stop offset="40%" style="stop-color:#F5C842"/>
+    <stop offset="60%" style="stop-color:#F5C842"/>
+    <stop offset="100%" style="stop-color:#8B6000"/>
+  </linearGradient>
+  <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#FFE066"/>
+    <stop offset="100%" style="stop-color:#C8860A"/>
+  </linearGradient>
+  <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#C8860A"/>
+    <stop offset="50%" style="stop-color:#F5C842"/>
+    <stop offset="100%" style="stop-color:#C8860A"/>
+  </linearGradient>
+  <linearGradient id="starGold" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#FFE066"/>
+    <stop offset="100%" style="stop-color:#C8860A"/>
+  </linearGradient>
+  <clipPath id="clipCN"><rect x="0" y="0" width="118" height="165" rx="12"/></clipPath>
+  <clipPath id="clipUS"><rect x="0" y="0" width="118" height="165" rx="12"/></clipPath>
+</defs>
+
+<rect width="680" height="560" fill="url(#bgGrad)" rx="20"/>
+<g stroke="#1E3A5F" stroke-width="0.5" opacity="0.35">
+  <line x1="0" y1="100" x2="680" y2="100"/><line x1="0" y1="200" x2="680" y2="200"/>
+  <line x1="0" y1="300" x2="680" y2="300"/><line x1="0" y1="400" x2="680" y2="400"/>
+  <line x1="100" y1="0" x2="100" y2="560"/><line x1="200" y1="0" x2="200" y2="560"/>
+  <line x1="340" y1="0" x2="340" y2="560"/><line x1="480" y1="0" x2="480" y2="560"/>
+  <line x1="580" y1="0" x2="580" y2="560"/>
+</g>
+<g fill="#1E3A5F" opacity="0.4">
+  <circle cx="100" cy="100" r="3"/><circle cx="200" cy="100" r="3"/>
+  <circle cx="480" cy="100" r="3"/><circle cx="580" cy="100" r="3"/>
+  <circle cx="100" cy="400" r="3"/><circle cx="580" cy="400" r="3"/>
+</g>
+
+<!-- LEFT CARD: CHINA FLAG + 掼 -->
+<g transform="translate(80,110)">
+  <rect x="4" y="4" width="118" height="165" rx="12" fill="rgba(0,0,0,0.45)"/>
+  <rect width="118" height="165" rx="12" fill="#CC0011"/>
+  <g clip-path="url(#clipCN)">
+    <rect width="118" height="165" fill="#DE2910"/>
+    <polygon points="20,8 23.8,19.4 35.8,19.4 26.0,26.3 29.8,37.7 20,30.8 10.2,37.7 14.0,26.3 4.2,19.4 16.2,19.4" fill="#FFDE00"/>
+    <polygon points="38,5 39.5,9.6 44.4,9.6 40.5,12.4 42.0,17 38,14.2 34,17 35.5,12.4 31.6,9.6 36.5,9.6" fill="#FFDE00"/>
+    <polygon points="46,13 47.5,17.6 52.4,17.6 48.5,20.4 50.0,25 46,22.2 42,25 43.5,20.4 39.6,17.6 44.5,17.6" fill="#FFDE00"/>
+    <polygon points="46,24 47.5,28.6 52.4,28.6 48.5,31.4 50.0,36 46,33.2 42,36 43.5,31.4 39.6,28.6 44.5,28.6" fill="#FFDE00"/>
+    <polygon points="38,32 39.5,36.6 44.4,36.6 40.5,39.4 42.0,44 38,41.2 34,44 35.5,39.4 31.6,36.6 36.5,36.6" fill="#FFDE00"/>
+    <rect width="118" height="165" fill="rgba(180,0,0,0.15)"/>
+  </g>
+  <rect x="2" y="2" width="114" height="161" rx="11" fill="none" stroke="rgba(255,220,220,0.3)" stroke-width="1"/>
+  <text x="59" y="120" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="58" font-weight="900" fill="rgba(255,255,255,0.97)">掼</text>
+  <text x="10" y="22" font-family="Georgia,serif" font-size="14" font-weight="700" fill="rgba(255,230,120,0.9)">A</text>
+  <text x="10" y="34" font-family="serif" font-size="10" fill="rgba(255,230,120,0.7)">♥</text>
+  <text x="59" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="rgba(255,230,120,0.85)" letter-spacing="2">中  国</text>
+</g>
+
+<!-- RIGHT CARD: USA FLAG + 蛋 -->
+<g transform="translate(482,110)">
+  <rect x="4" y="4" width="118" height="165" rx="12" fill="rgba(0,0,0,0.45)"/>
+  <rect width="118" height="165" rx="12" fill="#002868"/>
+  <g clip-path="url(#clipUS)">
+    <rect x="0" y="0" width="118" height="12.7" fill="#B22234"/>
+    <rect x="0" y="12.7" width="118" height="12.7" fill="#FFFFFF"/>
+    <rect x="0" y="25.4" width="118" height="12.7" fill="#B22234"/>
+    <rect x="0" y="38.1" width="118" height="12.7" fill="#FFFFFF"/>
+    <rect x="0" y="50.8" width="118" height="12.7" fill="#B22234"/>
+    <rect x="0" y="63.5" width="118" height="12.7" fill="#FFFFFF"/>
+    <rect x="0" y="76.2" width="118" height="12.7" fill="#B22234"/>
+    <rect x="0" y="88.9" width="118" height="12.7" fill="#FFFFFF"/>
+    <rect x="0" y="101.6" width="118" height="12.7" fill="#B22234"/>
+    <rect x="0" y="114.3" width="118" height="12.7" fill="#FFFFFF"/>
+    <rect x="0" y="127.0" width="118" height="12.7" fill="#B22234"/>
+    <rect x="0" y="139.7" width="118" height="12.7" fill="#FFFFFF"/>
+    <rect x="0" y="152.4" width="118" height="12.6" fill="#B22234"/>
+    <rect x="0" y="0" width="50" height="70" fill="#002868"/>
+    <g fill="#FFFFFF">
+      <polygon points="5,4 6,7 9,7 7,9 8,12 5,10 2,12 3,9 1,7 4,7"/>
+      <polygon points="13,4 14,7 17,7 15,9 16,12 13,10 10,12 11,9 9,7 12,7"/>
+      <polygon points="21,4 22,7 25,7 23,9 24,12 21,10 18,12 19,9 17,7 20,7"/>
+      <polygon points="29,4 30,7 33,7 31,9 32,12 29,10 26,12 27,9 25,7 28,7"/>
+      <polygon points="37,4 38,7 41,7 39,9 40,12 37,10 34,12 35,9 33,7 36,7"/>
+      <polygon points="45,4 46,7 49,7 47,9 48,12 45,10 42,12 43,9 41,7 44,7"/>
+      <polygon points="9,15 10,18 13,18 11,20 12,23 9,21 6,23 7,20 5,18 8,18"/>
+      <polygon points="17,15 18,18 21,18 19,20 20,23 17,21 14,23 15,20 13,18 16,18"/>
+      <polygon points="25,15 26,18 29,18 27,20 28,23 25,21 22,23 23,20 21,18 24,18"/>
+      <polygon points="33,15 34,18 37,18 35,20 36,23 33,21 30,23 31,20 29,18 32,18"/>
+      <polygon points="41,15 42,18 45,18 43,20 44,23 41,21 38,23 39,20 37,18 40,18"/>
+      <polygon points="5,26 6,29 9,29 7,31 8,34 5,32 2,34 3,31 1,29 4,29"/>
+      <polygon points="13,26 14,29 17,29 15,31 16,34 13,32 10,34 11,31 9,29 12,29"/>
+      <polygon points="21,26 22,29 25,29 23,31 24,34 21,32 18,34 19,31 17,29 20,29"/>
+      <polygon points="29,26 30,29 33,29 31,31 32,34 29,32 26,34 27,31 25,29 28,29"/>
+      <polygon points="37,26 38,29 41,29 39,31 40,34 37,32 34,34 35,31 33,29 36,29"/>
+      <polygon points="45,26 46,29 49,29 47,31 48,34 45,32 42,34 43,31 41,29 44,29"/>
+      <polygon points="9,37 10,40 13,40 11,42 12,45 9,43 6,45 7,42 5,40 8,40"/>
+      <polygon points="17,37 18,40 21,40 19,42 20,45 17,43 14,45 15,42 13,40 16,40"/>
+      <polygon points="25,37 26,40 29,40 27,42 28,45 25,43 22,45 23,42 21,40 24,40"/>
+      <polygon points="33,37 34,40 37,40 35,42 36,45 33,43 30,45 31,42 29,40 32,40"/>
+      <polygon points="41,37 42,40 45,40 43,42 44,45 41,43 38,45 39,42 37,40 40,40"/>
+      <polygon points="5,48 6,51 9,51 7,53 8,56 5,54 2,56 3,53 1,51 4,51"/>
+      <polygon points="13,48 14,51 17,51 15,53 16,56 13,54 10,56 11,53 9,51 12,51"/>
+      <polygon points="21,48 22,51 25,51 23,53 24,56 21,54 18,56 19,53 17,51 20,51"/>
+      <polygon points="29,48 30,51 33,51 31,53 32,56 29,54 26,56 27,53 25,51 28,51"/>
+      <polygon points="37,48 38,51 41,51 39,53 40,56 37,54 34,56 35,53 33,51 36,51"/>
+      <polygon points="45,48 46,51 49,51 47,53 48,56 45,54 42,56 43,53 41,51 44,51"/>
+    </g>
+    <rect width="118" height="165" fill="rgba(0,10,40,0.18)"/>
+  </g>
+  <rect x="2" y="2" width="114" height="161" rx="11" fill="none" stroke="rgba(200,220,255,0.3)" stroke-width="1"/>
+  <text x="59" y="120" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="58" font-weight="900" fill="rgba(255,255,255,0.97)">蛋</text>
+  <text x="10" y="22" font-family="Georgia,serif" font-size="14" font-weight="700" fill="rgba(255,240,160,0.9)">A</text>
+  <text x="10" y="34" font-family="serif" font-size="10" fill="rgba(255,240,160,0.7)">♠</text>
+  <text x="59" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="rgba(255,240,160,0.85)" letter-spacing="2">美  国</text>
+</g>
+
+<!-- CENTER AI EMBLEM -->
+<g transform="translate(340,192)">
+  <circle r="72" fill="none" stroke="#C8860A" stroke-width="1.5" opacity="0.5"/>
+  <circle r="58" fill="none" stroke="#F5C842" stroke-width="0.8" opacity="0.35"/>
+  <circle r="50" fill="#060E1E"/>
+  <g stroke="#3388EE" stroke-width="1" fill="none" opacity="0.6">
+    <path d="M-30,-38 Q0,-55 30,-38"/>
+    <path d="M-30,38 Q0,55 30,38"/>
+    <path d="M-48,-10 Q-58,0 -48,10"/>
+    <path d="M48,-10 Q58,0 48,10"/>
+  </g>
+  <g fill="#3388EE" opacity="0.85">
+    <circle cx="-30" cy="-38" r="4"/><circle cx="30" cy="-38" r="4"/>
+    <circle cx="-30" cy="38" r="4"/><circle cx="30" cy="38" r="4"/>
+    <circle cx="-48" cy="0" r="4"/><circle cx="48" cy="0" r="4"/>
+  </g>
+  <g stroke="rgba(100,180,255,0.25)" stroke-width="0.8">
+    <line x1="-30" y1="-38" x2="0" y2="0"/><line x1="30" y1="-38" x2="0" y2="0"/>
+    <line x1="-30" y1="38" x2="0" y2="0"/><line x1="30" y1="38" x2="0" y2="0"/>
+    <line x1="-48" y1="0" x2="0" y2="0"/><line x1="48" y1="0" x2="0" y2="0"/>
+  </g>
+  <text y="-8" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#F5C842">AI</text>
+  <text y="14" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="600" fill="#4499EE" letter-spacing="3">POWERED</text>
+  <g stroke="#C8860A" stroke-width="1.5" opacity="0.55">
+    <line x1="0" y1="-72" x2="0" y2="-63"/><line x1="0" y1="72" x2="0" y2="63"/>
+    <line x1="-72" y1="0" x2="-63" y2="0"/><line x1="72" y1="0" x2="63" y2="0"/>
+    <line x1="-51" y1="-51" x2="-44" y2="-44"/><line x1="51" y1="-51" x2="44" y2="-44"/>
+    <line x1="-51" y1="51" x2="-44" y2="44"/><line x1="51" y1="51" x2="44" y2="44"/>
+  </g>
+</g>
+
+<!-- Bridge lines -->
+<g stroke="#F5C842" stroke-width="1.2" fill="none" opacity="0.45" stroke-dasharray="4,4">
+  <line x1="198" y1="192" x2="268" y2="192"/>
+  <line x1="412" y1="192" x2="482" y2="192"/>
+</g>
+<g fill="#C8860A" opacity="0.65">
+  <circle cx="214" cy="192" r="2.5"/><circle cx="232" cy="192" r="2.5"/><circle cx="250" cy="192" r="2.5"/>
+  <circle cx="430" cy="192" r="2.5"/><circle cx="448" cy="192" r="2.5"/><circle cx="466" cy="192" r="2.5"/>
+</g>
+
+<!-- Stars arc -->
+<g fill="#F5C842" opacity="0.9">
+  <polygon points="220,62 223,71 232,71 225,77 228,86 220,80 212,86 215,77 208,71 217,71" transform="scale(0.62)translate(135,-8)"/>
+  <polygon points="270,58 273,67 282,67 275,73 278,82 270,76 262,82 265,73 258,67 267,67" transform="scale(0.50)translate(270,5)"/>
+  <polygon points="340,52 343,61 352,61 345,67 348,76 340,70 332,76 335,67 328,61 337,61" transform="scale(0.58)translate(246,-2)"/>
+  <polygon points="410,58 413,67 422,67 415,73 418,82 410,76 402,82 405,73 398,67 407,67" transform="scale(0.50)translate(220,5)"/>
+  <polygon points="460,62 463,71 472,71 465,77 468,86 460,80 452,86 455,77 448,71 457,71" transform="scale(0.62)translate(96,-8)"/>
+</g>
+
+<!-- NAME BLOCK -->
+<line x1="80" y1="318" x2="600" y2="318" stroke="#F5C842" stroke-width="1" opacity="0.55"/>
+<text x="340" y="360" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="50" font-weight="900" fill="#F5C842" letter-spacing="18">夏跃坚</text>
+<text x="340" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="rgba(210,175,100,0.70)" letter-spacing="9">XIA  YUEJIAN</text>
+<line x1="80" y1="402" x2="600" y2="402" stroke="#F5C842" stroke-width="1" opacity="0.55"/>
+<polygon points="340,397 345,402 340,407 335,402" fill="#F5C842" opacity="0.75"/>
+
+<text x="340" y="428" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="15" font-weight="700" fill="rgba(255,255,255,0.88)" letter-spacing="6">硅谷掼蛋  ·  全民欢乐</text>
+<text x="340" y="450" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="rgba(100,160,220,0.68)" letter-spacing="4">SILICON VALLEY  ·  AI GUANDAN  ·  FOR EVERYONE</text>
+
+<!-- CONTACT -->
+<line x1="80" y1="468" x2="600" y2="468" stroke="rgba(200,160,40,0.25)" stroke-width="0.8"/>
+<g transform="translate(148,478)" fill="none">
+  <rect width="20" height="14" rx="2" stroke="#C8A020" stroke-width="1.2" fill="rgba(200,160,20,0.1)"/>
+  <path d="M0,2 L10,9 L20,2" stroke="#C8A020" stroke-width="1.2" stroke-linecap="round"/>
+</g>
+<text x="176" y="490" text-anchor="start" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="rgba(210,175,100,0.90)" letter-spacing="1">联系：york.xia@gmail.com</text>
+<text x="340" y="530" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="rgba(200,150,60,0.40)" letter-spacing="3">© XIA YUEJIAN  ·  硅谷掼蛋  ·  ALL RIGHTS RESERVED</text>
+
+<!-- Corner brackets -->
+<g stroke="#C8860A" stroke-width="1.5" fill="none" opacity="0.35">
+  <path d="M28,62 L28,28 L62,28"/><path d="M618,28 L652,28 L652,62"/>
+  <path d="M28,498 L28,532 L62,532"/><path d="M618,532 L652,532 L652,498"/>
+</g>
+<g fill="#D4A017" opacity="0.30">
+  <polygon points="28,28 34,22 40,28 34,34"/><polygon points="652,28 658,22 664,28 658,34"/>
+  <polygon points="28,532 34,526 40,532 34,538"/><polygon points="652,532 658,526 664,532 658,538"/>
+</g>
+</svg>
