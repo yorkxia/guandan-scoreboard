@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>掼蛋计分器 · 部署说明</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Oswald:wght@600&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#F8F4EE; font-family:'Noto Serif SC',serif; color:#2A2010; padding:24px 16px 40px; }
+  h1 { font-size:22px; font-weight:700; color:#A86800; letter-spacing:4px; text-align:center; margin-bottom:4px; }
+  .sub { text-align:center; font-size:11px; color:#C8A040; letter-spacing:3px; margin-bottom:24px; font-family:'Oswald',sans-serif; }
+  .card { background:#FFF; border-radius:14px; border:2px solid #E8D8B0; box-shadow:0 4px 16px rgba(0,0,0,0.07); padding:20px; margin-bottom:16px; }
+  .card h2 { font-size:15px; font-weight:700; color:#8B0000; letter-spacing:2px; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .step { display:flex; gap:12px; margin-bottom:14px; align-items:flex-start; }
+  .num { min-width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,#D10A1E,#8B0000); color:#FFF; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-body { flex:1; }
+  .step-body strong { display:block; font-size:13px; font-weight:700; margin-bottom:3px; }
+  .step-body p { font-size:12px; color:#666; line-height:1.7; }
+  code { background:#F0EAD8; border:1px solid #D8C898; border-radius:5px; padding:2px 7px; font-family:monospace; font-size:12px; color:#7B4000; font-weight:700; }
+  .url-box { background:linear-gradient(135deg,#FFF8E0,#FFF0C0); border:2px solid #E8A020; border-radius:10px; padding:12px 16px; margin-top:10px; text-align:center; }
+  .url-box .url { font-family:monospace; font-size:13px; font-weight:700; color:#0055BB; word-break:break-all; }
+  .url-box .url-desc { font-size:10px; color:#A86800; margin-top:4px; letter-spacing:1px; }
+  .platform { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  .plat-btn { flex:1; min-width:120px; border-radius:10px; padding:10px 8px; text-align:center; border:2px solid; text-decoration:none; display:block; }
+  .plat-btn strong { display:block; font-size:13px; font-weight:700; }
+  .plat-btn span { font-size:10px; font-family:'Oswald',sans-serif; letter-spacing:1px; }
+  .plat-github { border-color:#333; background:#F6F8FA; color:#333; }
+  .plat-netlify { border-color:#00AD9F; background:#F0FFFD; color:#007A74; }
+  .plat-vercel  { border-color:#000; background:#F5F5F5; color:#000; }
+  .tag { display:inline-block; background:#E8F4FF; border:1px solid #90C0F0; border-radius:5px; padding:1px 8px; font-size:10px; color:#0055BB; font-weight:700; margin-left:4px; }
+  .tag.free { background:#E8FFE8; border-color:#80CC80; color:#226622; }
+  .divider { border:none; border-top:1px dashed #D8C898; margin:12px 0; }
+  .tip { background:#FFF8E0; border-left:4px solid #E8A020; padding:10px 14px; border-radius:0 8px 8px 0; font-size:11px; color:#7A5800; line-height:1.7; margin-top:10px; }
+  .tip strong { color:#A86800; }
+</style>
+</head>
+<body>
+
+<h1>掼蛋计分器</h1>
+<div class="sub">DEPLOYMENT GUIDE · 部署指南</div>
+
+<!-- 方法一：GitHub Pages -->
+<div class="card">
+  <h2>🌟 方法一：GitHub Pages <span class="tag free">免费永久</span><span class="tag">推荐</span></h2>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div class="step-body">
+      <strong>注册 GitHub 账号</strong>
+      <p>访问 <code>github.com</code> 注册免费账号（已有账号跳过此步）</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div class="step-body">
+      <strong>新建仓库</strong>
+      <p>点击右上角 <code>+</code> → <code>New repository</code><br>
+      仓库名填：<code>guandan</code>（或任意名称）<br>
+      勾选 <code>Public</code>，点击 <code>Create repository</code></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div class="step-body">
+      <strong>上传计分器文件</strong>
+      <p>点击 <code>uploading an existing file</code><br>
+      将下载的 <code>guandan_scoreboard.html</code> <strong>重命名为</strong> <code>index.html</code><br>
+      拖入上传框，点击 <code>Commit changes</code></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div class="step-body">
+      <strong>开启 GitHub Pages</strong>
+      <p>进入仓库 → <code>Settings</code> → 左侧 <code>Pages</code><br>
+      Source 选择 <code>Deploy from a branch</code><br>
+      Branch 选 <code>main</code>，文件夹选 <code>/ (root)</code>，点 <code>Save</code></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div class="step-body">
+      <strong>获得网址（约1分钟后生效）</strong>
+    </div>
+  </div>
+
+  <div class="url-box">
+    <div class="url">https://你的用户名.github.io/guandan/</div>
+    <div class="url-desc">全球可访问 · 微信可直接打开 · 永久免费</div>
+  </div>
+
+  <div class="tip"><strong>✅ 优点：</strong>完全免费、不限流量、全球 CDN、链接固定不变、微信内直接可用</div>
+</div>
+
+<!-- 方法二：Netlify 拖拽部署 -->
+<div class="card">
+  <h2>⚡ 方法二：Netlify 拖拽部署 <span class="tag free">最简单</span></h2>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div class="step-body">
+      <strong>访问 Netlify Drop</strong>
+      <p>直接打开：<code>app.netlify.com/drop</code>（无需注册）</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div class="step-body">
+      <strong>拖拽文件上传</strong>
+      <p>将 <code>index.html</code>（即重命名后的计分器）<strong>直接拖入</strong>网页中央区域</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div class="step-body">
+      <strong>立即获得网址</strong>
+      <p>10秒内自动生成链接，可分享给任何人</p>
+    </div>
+  </div>
+
+  <div class="url-box">
+    <div class="url">https://随机名字.netlify.app</div>
+    <div class="url-desc">10秒部署 · 注册后可自定义域名</div>
+  </div>
+
+  <div class="tip"><strong>⚠️ 注意：</strong>未注册账号的临时链接有效期约 24 小时，注册后永久有效</div>
+</div>
+
+<!-- 方法三：Vercel -->
+<div class="card">
+  <h2>🔷 方法三：Vercel <span class="tag free">免费</span></h2>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div class="step-body">
+      <strong>访问并注册</strong>
+      <p><code>vercel.com</code> → 用 GitHub 账号登录</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="num">2</div>
+    <div class="step-body">
+      <strong>导入 GitHub 仓库</strong>
+      <p>选择之前创建的 <code>guandan</code> 仓库 → 一键部署</p>
+    </div>
+  </div>
+
+  <div class="url-box">
+    <div class="url">https://guandan.vercel.app</div>
+    <div class="url-desc">与 GitHub 联动，推送代码自动更新</div>
+  </div>
+</div>
+
+<!-- 分享方式 -->
+<div class="card">
+  <h2>📱 部署后如何分享</h2>
+  <div class="step">
+    <div class="num">✓</div>
+    <div class="step-body">
+      <strong>微信分享</strong>
+      <p>直接发链接到微信群，朋友点开即可在微信内置浏览器使用</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="num">✓</div>
+    <div class="step-body">
+      <strong>生成二维码</strong>
+      <p>将链接粘贴到 <code>qr.io</code> 或微信扫一扫，生成二维码打印出来放桌上</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="num">✓</div>
+    <div class="step-body">
+      <strong>添加到手机桌面</strong>
+      <p>Safari/Chrome 打开链接 → 分享 → 添加到主屏幕，像App一样使用</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
