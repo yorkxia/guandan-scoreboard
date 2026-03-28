@@ -458,15 +458,66 @@ header{
 
 
 
-.header-logo-rect{
+.timer-widget{
   flex-shrink:0;margin-left:auto;
-  width:170px;height:140px;
-  border-radius:14px;overflow:hidden;
-  -webkit-box-shadow:0 4px 16px rgba(0,0,0,0.20),0 0 0 2px rgba(168,104,0,0.25);
-  box-shadow:0 4px 16px rgba(0,0,0,0.20),0 0 0 2px rgba(168,104,0,0.25);
+  width:150px;
+  background:-webkit-linear-gradient(145deg,#1C0D0A,#0A1628);
+  background:linear-gradient(145deg,#1C0D0A,#0A1628);
+  border-radius:16px;border:2px solid rgba(168,104,0,0.55);
+  -webkit-box-shadow:0 6px 20px rgba(0,0,0,0.35);box-shadow:0 6px 20px rgba(0,0,0,0.35);
+  padding:10px 10px 10px;
+  display:-webkit-flex;display:flex;
+  -webkit-flex-direction:column;flex-direction:column;
+  -webkit-align-items:center;align-items:center;
+  gap:7px;
 }
-.header-logo-rect svg{
-  width:100%;height:100%;display:block;
+.timer-label{
+  font-family:'Oswald','PingFang SC',sans-serif;
+  font-size:9px;font-weight:700;letter-spacing:4px;
+  color:rgba(200,134,10,0.70);text-transform:uppercase;
+}
+.timer-display{
+  font-family:'Oswald','Courier New',monospace;
+  font-size:40px;font-weight:700;line-height:1;
+  color:#F5C842;letter-spacing:3px;
+  text-shadow:0 0 18px rgba(245,200,66,0.55);
+  -webkit-transition:color 0.4s;transition:color 0.4s;
+}
+.timer-display.warning{color:#FF8C42;text-shadow:0 0 18px rgba(255,140,66,0.65);}
+.timer-display.expired{color:#FF3A50;text-shadow:0 0 18px rgba(255,58,80,0.70);-webkit-animation:timerBlink 0.6s infinite;animation:timerBlink 0.6s infinite;}
+@-webkit-keyframes timerBlink{0%,100%{opacity:1;}50%{opacity:0.35;}}
+@keyframes timerBlink{0%,100%{opacity:1;}50%{opacity:0.35;}}
+.timer-toggle-btn{
+  width:100%;height:34px;border:none;border-radius:10px;cursor:pointer;
+  font-family:'Noto Serif SC','PingFang SC',serif;font-size:13px;font-weight:900;letter-spacing:2px;
+  background:-webkit-linear-gradient(145deg,#F0B020,#A86800);
+  background:linear-gradient(145deg,#F0B020,#A86800);
+  color:#FFF;-webkit-box-shadow:0 3px 10px rgba(168,104,0,0.45);box-shadow:0 3px 10px rgba(168,104,0,0.45);
+  -webkit-transition:-webkit-transform 0.12s;transition:transform 0.12s;
+}
+.timer-toggle-btn:active{-webkit-transform:scale(0.93);transform:scale(0.93);}
+.timer-toggle-btn.paused{
+  background:-webkit-linear-gradient(145deg,#2ECC71,#1A7A40);
+  background:linear-gradient(145deg,#2ECC71,#1A7A40);
+  -webkit-box-shadow:0 3px 10px rgba(30,160,80,0.40);box-shadow:0 3px 10px rgba(30,160,80,0.40);
+}
+.timer-set-row{
+  display:-webkit-flex;display:flex;
+  -webkit-align-items:center;align-items:center;
+  gap:5px;
+}
+.timer-set-row input{
+  width:52px;height:26px;border-radius:8px;border:1.5px solid rgba(168,104,0,0.50);
+  background:rgba(255,255,255,0.08);color:#F5C842;
+  font-family:'Oswald','PingFang SC',sans-serif;font-size:15px;font-weight:700;
+  text-align:center;outline:none;
+  -webkit-appearance:none;-moz-appearance:textfield;
+}
+.timer-set-row input::-webkit-outer-spin-button,
+.timer-set-row input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.timer-set-row span{
+  font-family:'Noto Serif SC',serif;font-size:11px;font-weight:700;
+  color:rgba(200,134,10,0.75);letter-spacing:1px;
 }
 </style>
 </head>
@@ -478,32 +529,21 @@ header{
     <div class="title-main">掼蛋计分器<span class="title-reg">&#174;</span></div>
     <div class="title-en">GUANDAN &#183; SCOREBOARD</div>
   </div>
-  <div class="header-logo-rect">
-    <svg width="100%" height="100%" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+  <div class="timer-widget">
+    <div class="timer-label">每局计时 · ROUND TIMER</div>
+    <div class="timer-display" id="timerDisplay">60:00</div>
+    <button class="timer-toggle-btn paused" id="timerToggleBtn" onclick="timerToggle()">▶ 开始</button>
+    <div class="timer-set-row">
+      <input type="number" id="timerInput" value="60" min="1" max="999" onchange="timerSetMinutes(this.value)">
+      <span>分钟</span>
+    </div>
+  </div>
+  <div style="display:none"><svg width="1" height="1" xmlns="http://www.w3.org/2000/svg">
 <defs>
   <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" style="stop-color:#0A1628"/>
     <stop offset="50%" style="stop-color:#0D1F3C"/>
     <stop offset="100%" style="stop-color:#1A0A08"/>
-  </linearGradient>
-  <linearGradient id="goldH" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" style="stop-color:#8B6000"/>
-    <stop offset="40%" style="stop-color:#F5C842"/>
-    <stop offset="60%" style="stop-color:#F5C842"/>
-    <stop offset="100%" style="stop-color:#8B6000"/>
-  </linearGradient>
-  <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#FFE066"/>
-    <stop offset="100%" style="stop-color:#C8860A"/>
-  </linearGradient>
-  <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" style="stop-color:#C8860A"/>
-    <stop offset="50%" style="stop-color:#F5C842"/>
-    <stop offset="100%" style="stop-color:#C8860A"/>
-  </linearGradient>
-  <linearGradient id="starGold" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#FFE066"/>
-    <stop offset="100%" style="stop-color:#C8860A"/>
   </linearGradient>
   <clipPath id="clipCN"><rect x="0" y="0" width="118" height="165" rx="12"/></clipPath>
   <clipPath id="clipUS"><rect x="0" y="0" width="118" height="165" rx="12"/></clipPath>
@@ -680,7 +720,6 @@ header{
   <polygon points="28,532 34,526 40,532 34,538"/><polygon points="652,532 658,526 664,532 658,538"/>
 </g>
 </svg>
-
   </div>
 </header>
 
@@ -1055,6 +1094,7 @@ function startNextRound(){
   state.red=INIT; state.blue=INIT;
   state.aReady={red:false,blue:false};
   render();
+  timerReset(true);
 }
 
 /* ── 新局开始（底部按钮） ── */
@@ -1067,6 +1107,7 @@ function newRound(){
     var c=document.getElementById(t+'Card');
     c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop');
   });
+  timerReset(true);
 }
 
 /* ── 全部重置 ── */
@@ -1084,6 +1125,65 @@ function fullReset(){
     var c=document.getElementById(t+'Card');
     c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop');
   });
+  timerReset(false);
+}
+
+/* ── 计时器 ── */
+var timerDefault=60;
+var timerSecs=60*60;
+var timerInterval=null;
+var timerRunning=false;
+
+function timerUpdateDisplay(){
+  var m=Math.floor(timerSecs/60);
+  var s=timerSecs%60;
+  var el=document.getElementById('timerDisplay');
+  el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  el.classList.remove('warning','expired');
+  if(timerSecs<=0) el.classList.add('expired');
+  else if(timerSecs<=300) el.classList.add('warning');
+}
+
+function timerTick(){
+  if(timerSecs>0){ timerSecs--; timerUpdateDisplay(); }
+  else { timerStop(); }
+}
+
+function timerStart(){
+  if(timerRunning) return;
+  timerRunning=true;
+  timerInterval=setInterval(timerTick,1000);
+  var btn=document.getElementById('timerToggleBtn');
+  btn.textContent='⏸ 暂停';
+  btn.classList.remove('paused');
+}
+
+function timerStop(){
+  timerRunning=false;
+  clearInterval(timerInterval); timerInterval=null;
+  var btn=document.getElementById('timerToggleBtn');
+  btn.textContent='▶ 开始';
+  btn.classList.add('paused');
+}
+
+function timerToggle(){
+  if(timerRunning) timerStop(); else timerStart();
+}
+
+function timerReset(autoStart){
+  timerStop();
+  timerSecs=timerDefault*60;
+  timerUpdateDisplay();
+  if(autoStart) timerStart();
+}
+
+function timerSetMinutes(val){
+  var n=parseInt(val);
+  if(isNaN(n)||n<1) n=60;
+  if(n>999) n=999;
+  timerDefault=n;
+  document.getElementById('timerInput').value=n;
+  timerReset(false);
 }
 
 /* ── 彩带粒子 ── */
