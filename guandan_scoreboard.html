@@ -594,11 +594,20 @@ header{
   border-radius:6px;padding:2px 6px;
   white-space:nowrap;flex-shrink:0;
 }
+.ad-text-wrap{
+  flex:1;overflow:hidden;position:relative;
+}
 .ad-text{
   font-family:'Noto Serif SC',serif;
-  font-size:12px;font-weight:700;
-  color:var(--gold);flex:1;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:15px;font-weight:700;
+  color:var(--gold);
+  display:inline-block;
+  white-space:nowrap;
+  animation:ad-scroll 18s linear infinite;
+}
+@keyframes ad-scroll{
+  0%  { transform:translateX(100%); }
+  100%{ transform:translateX(-100%); }
 }
 .ad-img{max-height:40px;max-width:120px;border-radius:8px;object-fit:contain;flex-shrink:0;}
 .ad-close{
@@ -817,7 +826,9 @@ header{
 <div class="ad-banner" id="adBanner">
   <div class="ad-inner" id="adLink">
     <span class="ad-label">广告</span>
-    <span class="ad-text" id="adText"></span>
+    <div class="ad-text-wrap">
+      <span class="ad-text" id="adText"></span>
+    </div>
     <img class="ad-img" id="adImg" src="" alt="" style="display:none">
     <span class="ad-close" onclick="closeAd(event)" title="关闭">✕</span>
   </div>
