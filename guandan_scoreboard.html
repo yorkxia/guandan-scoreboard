@@ -1362,53 +1362,107 @@ render();
     }).catch(function(){});
   } catch(e){}
 
-  // 2. 加载广告
-  var currentAdId = null;
+  // 2. 广告轮播系统
+  var normalAds = [];      // 均分轮播广告
+  var specialAds = [];     // 高频广告（有 frequency_minutes）
+  var normalIdx = 0;       // 当前普通广告下标
+  var normalTimer = null;  // 普通广告定时器
+  var adClosed = false;    // 用户手动关闭
+
   fetch(API + '/api/ads')
     .then(function(r){ return r.json(); })
     .then(function(data){
-      if (!data.ad) return;
-      var ad = data.ad;
-      currentAdId = ad.id;
-      var banner = document.getElementById('adBanner');
-      var adLink = document.getElementById('adLink');
-      var adText = document.getElementById('adText');
-      var adImg  = document.getElementById('adImg');
+      if (!data.ads || data.ads.length === 0) return;
+      normalAds = data.ads.filter(function(a){ return !a.frequency_minutes; });
+      specialAds = data.ads.filter(function(a){ return !!a.frequency_minutes; });
 
-      // 设置内容
-      if (ad.content_type === 'image' && ad.content_url) {
-        adImg.src = ad.content_url;
-        adImg.style.display = '';
-        adText.textContent = ad.title;
-      } else {
-        adText.textContent = ad.content_text || ad.title;
-        adImg.style.display = 'none';
+      // 启动普通广告轮播
+      if (normalAds.length > 0) {
+        showNormal(0);
+        if (normalAds.length > 1) {
+          normalTimer = setTimeout(rotateNormal, 30000);
+        }
+      } else if (specialAds.length > 0) {
+        displayAd(specialAds[0]);
       }
 
-      // 设置点击跳转
-      if (ad.link_url) {
-        adLink.onclick = function(e){
-          if (e.target.classList.contains('ad-close')) return;
-          trackClick(ad.id);
-          window.open(ad.link_url, '_blank', 'noopener');
-        };
-      } else {
-        adLink.style.cursor = 'default';
-      }
+      // 启动高频广告定时中断
+      specialAds.forEach(function(ad) {
+        setInterval(function(){
+          if (adClosed) return;
+          if (normalTimer) { clearTimeout(normalTimer); normalTimer = null; }
+          displayAd(ad);
+          // 30秒后恢复普通轮播
+          if (normalAds.length > 0) {
+            normalTimer = setTimeout(function(){ rotateNormal(); }, 30000);
+          }
+        }, ad.frequency_minutes * 60 * 1000);
+      });
+    }).catch(function(){});
 
-      banner.style.display = 'block';
-    })
-    .catch(function(){});
+  function showNormal(idx) {
+    if (normalAds.length === 0) return;
+    normalIdx = idx % normalAds.length;
+    displayAd(normalAds[normalIdx]);
+  }
+
+  function rotateNormal() {
+    if (adClosed) return;
+    normalIdx = (normalIdx + 1) % normalAds.length;
+    displayAd(normalAds[normalIdx]);
+    normalTimer = setTimeout(rotateNormal, 30000);
+  }
+
+  function displayAd(ad) {
+    var banner = document.getElementById('adBanner');
+    var adLink = document.getElementById('adLink');
+    var adText = document.getElementById('adText');
+    var adImg  = document.getElementById('adImg');
+
+    if (ad.content_type === 'image' && ad.content_url) {
+      adImg.src = ad.content_url;
+      adImg.style.display = 'block';
+      adText.textContent = ad.title;
+    } else {
+      adText.textContent = ad.content_text || ad.title;
+      adImg.style.display = 'none';
+    }
+
+    // 重启滚动动画
+    adText.style.animation = 'none';
+    void adText.offsetWidth;
+    adText.style.animation = '';
+
+    adLink.onclick = null;
+    if (ad.link_url) {
+      adLink.style.cursor = 'pointer';
+      adLink.onclick = function(e){
+        if (e.target.classList.contains('ad-close')) return;
+        trackClick(ad.id);
+        window.open(ad.link_url, '_blank', 'noopener');
+      };
+    } else {
+      adLink.style.cursor = 'default';
+    }
+
+    banner.style.display = 'block';
+    adClosed = false;
+    trackImpression(ad.id);
+  }
+
+  function trackImpression(id) {
+    try { fetch(API + '/api/ads/' + id + '/impression', { method: 'POST' }).catch(function(){}); } catch(e){}
+  }
 
   function trackClick(id) {
-    try {
-      fetch(API + '/api/ads/' + id + '/click', { method: 'POST' }).catch(function(){});
-    } catch(e){}
+    try { fetch(API + '/api/ads/' + id + '/click', { method: 'POST' }).catch(function(){}); } catch(e){}
   }
 
   window.closeAd = function(e) {
     e.stopPropagation();
     document.getElementById('adBanner').style.display = 'none';
+    adClosed = true;
+    if (normalTimer) { clearTimeout(normalTimer); normalTimer = null; }
   };
 })();
 </script>
