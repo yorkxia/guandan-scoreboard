@@ -54,11 +54,11 @@ header{
   position:relative;z-index:1;width:100%;max-width:540px;
   display:-webkit-flex;display:flex;
   -webkit-align-items:stretch;align-items:stretch;
-  padding:12px 12px 6px;
+  padding:8px 12px 4px;
   gap:10px;
 }
 .title-wrap{
-  -webkit-flex:5;flex:5;
+  -webkit-flex:4;flex:4;
   display:-webkit-flex;display:flex;
   -webkit-flex-direction:column;flex-direction:column;
   -webkit-align-items:flex-start;align-items:flex-start;
@@ -66,7 +66,7 @@ header{
   background:-webkit-linear-gradient(150deg,#FFFDF5,#FFF8DC,#FFF0B0);
   background:linear-gradient(150deg,#FFFDF5,#FFF8DC,#FFF0B0);
   border:2.5px solid var(--gold-light);border-radius:20px;
-  padding:14px 16px 14px 18px;position:relative;overflow:hidden;
+  padding:10px 14px 10px 16px;position:relative;overflow:hidden;
   -webkit-box-shadow:0 8px 28px rgba(168,104,0,0.18),inset 0 1px 0 rgba(255,255,255,0.95);
   box-shadow:0 8px 28px rgba(168,104,0,0.18),inset 0 1px 0 rgba(255,255,255,0.95);
 }
@@ -83,18 +83,18 @@ header{
 }
 .title-main{
   font-family:'Noto Serif SC','PingFang SC','Microsoft YaHei',serif;
-  font-size:22px;font-weight:900;letter-spacing:4px;color:var(--gold);
+  font-size:19px;font-weight:900;letter-spacing:4px;color:var(--gold);
   text-shadow:0 2px 0 rgba(255,255,255,0.9),0 4px 14px rgba(168,104,0,0.25);
   line-height:1;white-space:nowrap;
 }
 .title-reg{
-  font-size:12px;font-weight:900;vertical-align:super;color:var(--gold-mid);
+  font-size:10px;font-weight:900;vertical-align:super;color:var(--gold-mid);
   font-family:Georgia,serif;margin-left:1px;
 }
 .title-sub{
   font-family:'Noto Serif SC','PingFang SC',serif;
-  font-size:13px;font-weight:700;color:var(--gold-mid);
-  margin-top:6px;letter-spacing:3px;opacity:0.90;
+  font-size:11px;font-weight:700;color:var(--gold-mid);
+  margin-top:4px;letter-spacing:3px;opacity:0.90;
 }
 .title-en{
   font-family:'Oswald','PingFang SC','Microsoft YaHei',sans-serif;
@@ -483,14 +483,14 @@ header{
 
 
 .timer-widget{
-  -webkit-flex:6;flex:6;
+  -webkit-flex:5;flex:5;
   background:-webkit-linear-gradient(150deg,#0D1628,#1A0C06,#0A1420);
   background:linear-gradient(150deg,#0D1628,#1A0C06,#0A1420);
   border-radius:20px;
   border:2.5px solid rgba(200,140,10,0.55);
   -webkit-box-shadow:0 8px 28px rgba(0,0,0,0.40),inset 0 1px 0 rgba(255,220,80,0.08);
   box-shadow:0 8px 28px rgba(0,0,0,0.40),inset 0 1px 0 rgba(255,220,80,0.08);
-  padding:12px 14px;
+  padding:9px 12px;
   display:-webkit-flex;display:flex;
   -webkit-flex-direction:column;flex-direction:column;
   -webkit-align-items:center;align-items:center;
@@ -511,7 +511,7 @@ header{
 }
 .timer-display{
   font-family:'Oswald','Courier New',monospace;
-  font-size:46px;font-weight:700;line-height:1;
+  font-size:38px;font-weight:700;line-height:1;
   color:#F5C842;letter-spacing:4px;
   text-shadow:0 0 22px rgba(245,200,66,0.60),0 2px 0 rgba(0,0,0,0.5);
   -webkit-transition:color 0.4s;transition:color 0.4s;
@@ -531,8 +531,8 @@ header{
   width:100%;display:-webkit-flex;display:flex;gap:7px;
 }
 .timer-toggle-btn{
-  -webkit-flex:1;flex:1;height:30px;border:none;border-radius:10px;cursor:pointer;
-  font-family:'Noto Serif SC','PingFang SC',serif;font-size:12px;font-weight:900;letter-spacing:1px;
+  -webkit-flex:1;flex:1;height:26px;border:none;border-radius:10px;cursor:pointer;
+  font-family:'Noto Serif SC','PingFang SC',serif;font-size:11px;font-weight:900;letter-spacing:1px;
   background:-webkit-linear-gradient(145deg,#2ECC71,#1A7A40);
   background:linear-gradient(145deg,#2ECC71,#1A7A40);
   color:#FFF;-webkit-box-shadow:0 3px 10px rgba(30,160,80,0.45);box-shadow:0 3px 10px rgba(30,160,80,0.45);
@@ -550,7 +550,7 @@ header{
   gap:5px;
 }
 .timer-set-row input{
-  width:46px;height:24px;border-radius:8px;
+  width:42px;height:22px;border-radius:8px;
   border:1.5px solid rgba(200,134,10,0.45);
   background:rgba(255,255,255,0.07);color:#F5C842;
   font-family:'Oswald','PingFang SC',sans-serif;font-size:14px;font-weight:700;
@@ -568,7 +568,7 @@ header{
 .ad-banner{
   position:relative;z-index:1;
   width:100%;max-width:540px;
-  margin:4px 12px 0;
+  margin:6px 0 0;
   box-sizing:border-box;
   padding:0 12px;
   display:none;
@@ -576,22 +576,23 @@ header{
 .ad-inner{
   display:-webkit-flex;display:flex;
   -webkit-align-items:center;align-items:center;
-  background:linear-gradient(135deg,rgba(255,248,220,0.95),rgba(255,240,180,0.95));
-  border:1.5px solid rgba(200,134,10,0.35);
-  border-radius:14px;
-  padding:8px 12px;
-  gap:10px;
-  box-shadow:0 3px 12px rgba(168,104,0,0.12);
+  background:linear-gradient(135deg,rgba(255,248,220,0.97),rgba(255,238,160,0.97));
+  border:2px solid rgba(200,134,10,0.45);
+  border-radius:18px;
+  padding:18px 16px;
+  gap:14px;
+  min-height:80px;
+  box-shadow:0 5px 20px rgba(168,104,0,0.18),inset 0 1px 0 rgba(255,255,255,0.9);
   cursor:pointer;
   text-decoration:none;
   transition:box-shadow 0.2s;
 }
-.ad-inner:hover{box-shadow:0 4px 16px rgba(168,104,0,0.22);}
+.ad-inner:hover{box-shadow:0 6px 24px rgba(168,104,0,0.28);}
 .ad-label{
-  font-size:9px;font-weight:900;letter-spacing:2px;
-  color:rgba(168,104,0,0.55);
-  background:rgba(200,134,10,0.12);
-  border-radius:6px;padding:2px 6px;
+  font-size:11px;font-weight:900;letter-spacing:2px;
+  color:rgba(168,104,0,0.65);
+  background:rgba(200,134,10,0.16);
+  border-radius:8px;padding:5px 9px;
   white-space:nowrap;flex-shrink:0;
 }
 .ad-text-wrap{
@@ -599,20 +600,20 @@ header{
 }
 .ad-text{
   font-family:'Noto Serif SC',serif;
-  font-size:15px;font-weight:700;
+  font-size:18px;font-weight:700;
   color:var(--gold);
   display:inline-block;
   white-space:nowrap;
-  animation:ad-scroll 18s linear infinite;
+  animation:ad-scroll 20s linear infinite;
 }
 @keyframes ad-scroll{
   0%  { transform:translateX(100%); }
   100%{ transform:translateX(-100%); }
 }
-.ad-img{max-height:40px;max-width:120px;border-radius:8px;object-fit:contain;flex-shrink:0;}
+.ad-img{max-height:52px;max-width:140px;border-radius:10px;object-fit:contain;flex-shrink:0;}
 .ad-close{
-  font-size:14px;color:rgba(168,104,0,0.4);
-  flex-shrink:0;padding:2px 4px;cursor:pointer;line-height:1;
+  font-size:16px;color:rgba(168,104,0,0.4);
+  flex-shrink:0;padding:4px 6px;cursor:pointer;line-height:1;
 }
 .ad-close:hover{color:rgba(168,104,0,0.7);}
 </style>
