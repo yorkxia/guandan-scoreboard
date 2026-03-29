@@ -563,6 +563,49 @@ header{
   font-family:'Noto Serif SC',serif;font-size:10px;font-weight:700;
   color:rgba(200,134,10,0.65);letter-spacing:1px;
 }
+
+/* AD BANNER */
+.ad-banner{
+  position:relative;z-index:1;
+  width:100%;max-width:540px;
+  margin:4px 12px 0;
+  box-sizing:border-box;
+  padding:0 12px;
+  display:none;
+}
+.ad-inner{
+  display:-webkit-flex;display:flex;
+  -webkit-align-items:center;align-items:center;
+  background:linear-gradient(135deg,rgba(255,248,220,0.95),rgba(255,240,180,0.95));
+  border:1.5px solid rgba(200,134,10,0.35);
+  border-radius:14px;
+  padding:8px 12px;
+  gap:10px;
+  box-shadow:0 3px 12px rgba(168,104,0,0.12);
+  cursor:pointer;
+  text-decoration:none;
+  transition:box-shadow 0.2s;
+}
+.ad-inner:hover{box-shadow:0 4px 16px rgba(168,104,0,0.22);}
+.ad-label{
+  font-size:9px;font-weight:900;letter-spacing:2px;
+  color:rgba(168,104,0,0.55);
+  background:rgba(200,134,10,0.12);
+  border-radius:6px;padding:2px 6px;
+  white-space:nowrap;flex-shrink:0;
+}
+.ad-text{
+  font-family:'Noto Serif SC',serif;
+  font-size:12px;font-weight:700;
+  color:var(--gold);flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.ad-img{max-height:40px;max-width:120px;border-radius:8px;object-fit:contain;flex-shrink:0;}
+.ad-close{
+  font-size:14px;color:rgba(168,104,0,0.4);
+  flex-shrink:0;padding:2px 4px;cursor:pointer;line-height:1;
+}
+.ad-close:hover{color:rgba(168,104,0,0.7);}
 </style>
 </head>
 <body>
@@ -769,6 +812,16 @@ header{
 </svg>
   </div>
 </header>
+
+<!-- AD BANNER -->
+<div class="ad-banner" id="adBanner">
+  <div class="ad-inner" id="adLink">
+    <span class="ad-label">广告</span>
+    <span class="ad-text" id="adText"></span>
+    <img class="ad-img" id="adImg" src="" alt="" style="display:none">
+    <span class="ad-close" onclick="closeAd(event)" title="关闭">✕</span>
+  </div>
+</div>
 
 <div class="round-bar">
   <span class="round-zh">&#31532;</span>
@@ -1283,6 +1336,69 @@ function stopParticles(){
 }
 
 render();
+
+// ── 监控模块：访问追踪 + 广告加载 ───────────────────────
+(function(){
+  var API = 'https://silicon-guandan-system.onrender.com/scoreboard';
+
+  // 1. 上报访问
+  try {
+    fetch(API + '/api/visit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      keepalive: true
+    }).catch(function(){});
+  } catch(e){}
+
+  // 2. 加载广告
+  var currentAdId = null;
+  fetch(API + '/api/ads')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (!data.ad) return;
+      var ad = data.ad;
+      currentAdId = ad.id;
+      var banner = document.getElementById('adBanner');
+      var adLink = document.getElementById('adLink');
+      var adText = document.getElementById('adText');
+      var adImg  = document.getElementById('adImg');
+
+      // 设置内容
+      if (ad.content_type === 'image' && ad.content_url) {
+        adImg.src = ad.content_url;
+        adImg.style.display = '';
+        adText.textContent = ad.title;
+      } else {
+        adText.textContent = ad.content_text || ad.title;
+        adImg.style.display = 'none';
+      }
+
+      // 设置点击跳转
+      if (ad.link_url) {
+        adLink.onclick = function(e){
+          if (e.target.classList.contains('ad-close')) return;
+          trackClick(ad.id);
+          window.open(ad.link_url, '_blank', 'noopener');
+        };
+      } else {
+        adLink.style.cursor = 'default';
+      }
+
+      banner.style.display = '';
+    })
+    .catch(function(){});
+
+  function trackClick(id) {
+    try {
+      fetch(API + '/api/ads/' + id + '/click', { method: 'POST' }).catch(function(){});
+    } catch(e){}
+  }
+
+  window.closeAd = function(e) {
+    e.stopPropagation();
+    document.getElementById('adBanner').style.display = 'none';
+  };
+})();
 </script>
 </body>
 </html>
