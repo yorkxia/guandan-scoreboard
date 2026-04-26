@@ -1,9 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=guandan_scoreboard.html">
-<title>掼蛋计分器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>掼蛋计分器 · 硅谷掼蛋协会</title>
+
+<!-- ===== 微信 / 社交分享卡片 Open Graph 标签 ===== -->
+<meta property="og:title"       content="掼蛋计分器 · 硅谷掼蛋协会">
+<meta property="og:description" content="专业掼蛋计分工具 · 多桌同时记分 · 实时排名更新 · 点击立即使用">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://yorkxia.github.io/guandan-scoreboard/">
+<meta property="og:image"       content="https://yorkxia.github.io/guandan-scoreboard/Gemini_Generated_Image_logoyork.png">
+<meta property="og:image:width"  content="600">
+<meta property="og:image:height" content="600">
+<meta property="og:site_name"   content="硅谷掼蛋协会">
+<meta name="description"        content="专业掼蛋计分工具 · 多桌同时记分 · 实时排名更新 · 点击立即使用">
+
+<!-- 微信浏览器兼容 -->
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(150deg, #8B1A1A 0%, #5C0A0A 50%, #3A0505 100%);
+    font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei', sans-serif;
+    overflow: hidden;
+  }
+
+  /* 背景花纹 */
+  body::before {
+    content: '🀇🀈🀉🀊🀋🀌🀍🀎🀏';
+    position: fixed;
+    top: -40px; left: -40px; right: -40px; bottom: -40px;
+    font-size: 80px;
+    opacity: 0.04;
+    letter-spacing: 20px;
+    line-height: 1.8;
+    word-break: break-all;
+    pointer-events: none;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.97);
+    border-radius: 28px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    padding: 44px 36px 36px;
+    max-width: 380px;
+    width: 92%;
+    text-align: center;
+    position: relative;
+    animation: slideUp .5s ease;
+  }
+
+  @keyframes slideUp {
+    from { opacity:0; transform:translateY(30px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* 会标 */
+  .logo-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#C0000F,#8B0000);
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 24px rgba(139,0,0,0.4);
+    overflow: hidden;
+  }
+  .logo-wrap img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .logo-fallback { font-size: 48px; }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #8B1A1A;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .sub {
+    font-size: 12px;
+    color: #bbb;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+  }
+
+  /* 功能亮点 */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .feat {
+    background: linear-gradient(135deg,#FDF5E8,#FFF8F0);
+    border: 1px solid #F0D080;
+    border-radius: 12px;
+    padding: 12px 8px;
+    font-size: 13px;
+    color: #6B3A00;
+  }
+  .feat .icon { font-size: 22px; display:block; margin-bottom:4px; }
+
+  /* 主按钮 */
+  .btn-main {
+    display: block;
+    background: linear-gradient(135deg, #C0000F, #8B0000);
+    color: #FFD700;
+    text-decoration: none;
+    padding: 16px 0;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 24px rgba(139,0,0,0.4);
+    margin-bottom: 14px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-main:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 12px rgba(139,0,0,0.3);
+  }
+
+  .url-hint {
+    font-size: 11px;
+    color: #ccc;
+    word-break: break-all;
+  }
+
+  /* 倒计时条 */
+  .progress-bar {
+    height: 3px;
+    background: #F0D0A0;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg,#C0000F,#FFD700);
+    border-radius: 2px;
+    animation: fillBar 2.5s linear forwards;
+  }
+  @keyframes fillBar {
+    from { width: 0%; }
+    to   { width: 100%; }
+  }
+</style>
 </head>
-<body></body>
+<body>
+
+<div class="card">
+
+  <!-- 会标 -->
+  <div class="logo-wrap">
+    <img src="Gemini_Generated_Image_logoyork.png"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+         alt="硅谷掼蛋协会">
+    <span class="logo-fallback" style="display:none">🎴</span>
+  </div>
+
+  <h1>掼蛋计分器</h1>
+  <div class="sub">硅谷掼蛋协会 · Silicon Valley Guandan Assoc.</div>
+
+  <!-- 进度条（视觉倒计时） -->
+  <div class="progress-bar"><div class="progress-fill"></div></div>
+
+  <!-- 功能亮点 -->
+  <div class="features">
+    <div class="feat"><span class="icon">🃏</span>多桌同时<br>记分</div>
+    <div class="feat"><span class="icon">📊</span>实时排名<br>更新</div>
+    <div class="feat"><span class="icon">📱</span>手机<br>扫码入分</div>
+    <div class="feat"><span class="icon">🏆</span>赛事<br>全程管理</div>
+  </div>
+
+  <!-- 立即使用按钮 -->
+  <a class="btn-main"
+     href="https://silicon-guandan-system.onrender.com/guandan"
+     id="goBtn">
+    🃏 立即使用计分器
+  </a>
+
+  <div class="url-hint">silicon-guandan-system.onrender.com/guandan</div>
+</div>
+
+<script>
+  // 2.5 秒后自动跳转（给微信爬虫足够时间读取OG标签）
+  setTimeout(function() {
+    window.location.href = 'https://silicon-guandan-system.onrender.com/guandan';
+  }, 2500);
+</script>
+
+</body>
 </html>
